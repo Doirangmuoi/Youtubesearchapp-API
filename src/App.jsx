@@ -57,7 +57,7 @@ function App() {
   // Chạy lần đầu khi load trang
   useEffect(() => {
     fetchVideos(searchTerm);
-  }, []);
+  }, [searchTerm]);
 
   const handleSearch = (term) => {
     setSearchTerm(term);
@@ -71,11 +71,6 @@ function App() {
       fetchVideos(searchTerm, token);
       window.scrollTo(0, 0); // Cuộn lên đầu trang khi qua trang mới
     }
-  };
-
-  const handleVideoSelect = (video) => {
-    console.log("Video được chọn:", video);
-    // Logic mở Modal sẽ nằm ở bước 3
   };
 
   return (
@@ -92,7 +87,7 @@ function App() {
             ) : (
         <VideoList
             videos={videos}
-            onVideoSelect={handleVideoSelect}
+            onVideoSelect={(video) => setSelectedVideo(video)}
             onPageChange={handlePageChange}
             hasNextPage={true}
             hasPrevPage={false}
