@@ -95,7 +95,7 @@ const RegisterPage = () => {
                              onChange={(e) => setConfirmPassword(e.target.value)}
                             />Confirm password
                         </div>
-                        <button type="submit">Đăng kí</button>
+                        <button type="submit" className="p-5">Đăng kí</button>
                         <Link to="/login">
                            Bạn đã có tài khoản? Đăng nhập
                         </Link>
