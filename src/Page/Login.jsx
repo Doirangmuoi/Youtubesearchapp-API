@@ -6,28 +6,24 @@ const login = (email, password) => {
         JSON.parse(localStorage.getItem("youtube_app_users")) || [];
 
     const user = users.find(
-        u => u.email === email && u.password === password
+        u => u.email === email
     );
 
     if (!user) {
-        alert("Sai email hoặc mật khẩu!");
+        alert("Sai email !");
         return false;
     }
 
     const matchPassword = bcrypt.compareSync(password, user.password);
 
-    if (matchPassword) {
+    if (matchPassword === true) {
         alert("Đăng nhập thành công!");
-
         localStorage.setItem(
             "current_user",
             JSON.stringify({ email: user.email })
         );
-
-        // navigate("/");
     } else {
         alert("Sai mật khẩu!");
-        return false
     }
 
     return true;
